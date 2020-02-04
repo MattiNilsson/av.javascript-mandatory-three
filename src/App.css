@@ -36,3 +36,75 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+  background-color : rgb(39, 39, 39);
+}
+
+*{
+  color : white;
+}
+
+button, input{
+  color: black;
+}
+
+.flex, form{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todos{
+  width: 450px;
+  background-color: rgb(44, 44, 44);
+  border-radius: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  transition: all 0.2s ease-out;
+}
+.todo:first-of-type{
+  margin-top: 30px;
+}
+.todo:last-of-type{
+  margin-bottom: 30px;
+}
+
+.todo{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 400px;
+  border-radius: 30px;
+  background-color: rgb(58, 58, 58);
+  transition: all 0.1s ease-out;
+}
+
+.todo:hover{
+  background-color: rgb(0, 79, 82);
+}
+
+.todo > h3{
+  width: 325px;
+  text-align: left;
+}
+
+button{
+  border: white 2px solid;
+  background-color: rgb(39, 39, 39);
+  color : white;
+  width: 200px;
+  height: 30px;
+  border-radius: 20px;
+  margin: 10px 10px 10px 10px;
+  transition: all 0.1s ease-in;
+}
+
+button:hover{
+  background-color: rgb(0, 79, 82);
+  color: rgb(126, 251, 255);
+  border: rgb(126, 251, 255) 2px solid;
+}

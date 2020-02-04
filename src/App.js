@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Login from "./components/Login"
+import Reg from "./components/Reg"
+import Todos from "./components/Todos"
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render(){
+    return (
+      <div className="App">
+        <h1>My Todo App</h1>
+        <Router>
+          <header>
+            <Link to="/login"><button>Login Page</button></Link>
+            <Link to="/reg"><button>Regestration Page</button></Link>
+          </header>
+          <Route path="/login" component={Login}/>
+          <Route path="/reg" component={Reg}/>
+          <Route exact path="/" component={Todos}/>
+        </Router>
+      </div>
+
+    );
+  }
 }
+
 
 export default App;
