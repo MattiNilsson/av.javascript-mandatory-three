@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import { Redirect } from "react-router";
+import { token$, updateToken } from '../store';
 
 function addId(fn, id) {
   return (e) => fn(e, id);
@@ -39,12 +40,24 @@ class Reg extends React.Component {
       })
       .then((response) => {
         console.log(response)
+        localStorage.clear();
+        updateToken(null);
+      })
+      .then(() =>{
         this.setState({success : true})
       })
       .catch((error) => {
         console.log(error);
       })
     }
+  }
+
+  componentWillMount(){
+    this.subscription = token$.subscribe(token => this.setState({ token }));
+  }
+
+  componentWillUnmount() {
+    this.subscription.unsubscribe();
   }
 
   onChange(e, id){
@@ -57,12 +70,11 @@ class Reg extends React.Component {
 
   render() { 
     if(this.state.success){
-      console.log("abc");
       return <Redirect to="/login" />
     }
     return (
-    <div className="flex">
-      <p>Regestration</p>
+    <div className="flex log">
+      <h1 style={{marginBottom : "20px",}}>Regestration</h1>
       <form onSubmit={this.onSubmit}>
       email<input type="email" onChange={this.onChangeEmail} value={this.state.details.email}/>
       username<input  onChange={this.onChangeUserName} value={this.state.details.username}/>

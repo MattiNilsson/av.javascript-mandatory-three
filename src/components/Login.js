@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from "axios";
 import { Redirect } from "react-router";
-import Todos from "./Todos"
 import { token$, updateToken } from '../store';
 
 
@@ -49,8 +48,8 @@ class Login extends React.Component {
     }
 
     return ( 
-    <div className="flex">
-      <p>login</p>
+    <div className="flex log">
+      <h1 style={{marginBottom : "20px",}}>login</h1>
       <form onSubmit={this.onSubmit}>
       Email<input 
         name="email" 
