@@ -47,7 +47,7 @@ class Reg extends React.Component {
         this.setState({success : true})
       })
       .catch((error) => {
-        console.log(error);
+        alert("something went wrong. Try again please")
       })
     }
   }

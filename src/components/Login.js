@@ -13,6 +13,7 @@ class Login extends React.Component {
       password : "",
       token : token$.value,
       submitted : false,
+      error : false,
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -35,6 +36,9 @@ class Login extends React.Component {
     .then((response) =>{
       updateToken(response.data.token);
     })
+    .catch((error) => {
+      this.setState({error : true});
+    })
   }
 
   onChange(e){
@@ -46,10 +50,15 @@ class Login extends React.Component {
     if(this.state.token) {
       return <Redirect to="/"/>
     }
+    let error;
+    if(this.state.error) {
+      error = <h4 style={{color: "red"}}>Username and Password does not match</h4>
+    }
 
     return ( 
     <div className="flex log">
       <h1 style={{marginBottom : "20px",}}>login</h1>
+      {error}
       <form onSubmit={this.onSubmit}>
       Email<input 
         name="email" 
